@@ -20,5 +20,5 @@ class Player:
         move = str(input('Grid space: '))
         return move
 
-    def tell_grid(self, move: int) -> Tuple[int, str]:
-        return tuple(move, self.token)
+    def tell_grid(self, move: int) -> Tuple:
+        return (move, self.token)
