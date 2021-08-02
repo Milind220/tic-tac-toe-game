@@ -1,8 +1,9 @@
-"""Script for grid class."""
+"""Script for grid class"""
 
 class Grid:
-    def __init__(self) -> None:
-        self._internal_grid = list(range(9))
+    def __init__(self,
+                 _internal_grid = list(range(9))) -> None:
+        self._internal_grid = _internal_grid
         print('grid created!')
     
     def check_valid(self) -> bool:
