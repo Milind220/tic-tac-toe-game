@@ -1,4 +1,4 @@
-"""Script for Player class."""
+"""Script for Player class"""
 
 from typing import Tuple
 
