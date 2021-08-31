@@ -4,6 +4,8 @@ from typing import Tuple
 
 
 class Player:
+    '''Class to represent a player in the game
+    '''
     def __init__(self) -> None:
         print('player created!')
 
