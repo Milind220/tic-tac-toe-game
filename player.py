@@ -1,5 +1,6 @@
 """Script for Player class"""
 
+
 from typing import Tuple
 
 
