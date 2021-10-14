@@ -1,1 +1,3 @@
-ReadMe file for Tic Tac Toe game in tic-tac repo.
+Tic Tac Toe game.
+
+This is not complete yet...
