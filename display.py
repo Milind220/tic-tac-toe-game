@@ -7,10 +7,15 @@ from typing import Tuple
 class Display:
     """Class that displays the game in the command line
 
+    Meant to be instantiated once. Directly displays the game in the 
+    command line.
+
     Methods:
         show_invalid_move: Prints a line to inform a player that the move is invalid.
+        show_win: Informs players that the game has been won.
+        show tie: Informs the players that the game has been tied.
     """
-    _display_init = ['   |   |   \n', '-----------'] # These are the only two 'lines' that are required to generate a grid
+    _display_init = ['   |   |   \n', '-----------\n'] # These are the only two 'lines' that are required to generate a grid
 
     def __init__(self, 
                  player: int = 1,
