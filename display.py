@@ -15,8 +15,8 @@ class Display:
         show_win: Informs players that the game has been won.
         show tie: Informs the players that the game has been tied.
     """
-    _display_init = ['   |   |   \n', '-----------\n'] # These are the only two 'lines' that are required to generate a grid
-
+    _display_init: List[str]= ['   |   |   \n', '-----------\n'] # The two 'lines' that are required to generate a grid.
+    _possible_moves_list: List[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9] # Used to show the players what moves are available.
     def __init__(self, 
                  player: int = 1,
                  ongoing: bool = True,
@@ -43,6 +43,25 @@ class Display:
         """Prints a line to notify the player that the game has been tied."""
         print(f"Oh no! The game's a tie!")
     
+    def show_possible_moves_grid(
+        self,
+        internal_grid: List[str]
+        ) -> None:
+        """Prints a grid with remaining possible moves shown by numbers
+
+        Args:
+            internal_grid (List[str]): A list of length 9. 
+            Contains either token string or blank space string.
+        """
+        possible_moves_list: List[str] = []
+        for index, value in enumerate(internal_grid):
+            if value == ' ':
+                possible_moves_list.append(str(index+1))
+            else:
+                possible_moves_list.append(' ')
+        display_grid: str = self._make_grid_string(possible_moves_list)
+        print(display_grid)
+
     def show_game_grid(
         self, 
         internal_grid: List[str] # This is internal_grid from Grid class
@@ -53,19 +72,35 @@ class Display:
             internal_grid (List[str]): A list of length 9. 
             Contains either token string or blank space string.
         """
-        game_grid: str = ''
+        game_grid: str = self._make_grid_string(internal_grid)
+        print(game_grid)
+
+    def _make_grid_string(
+        self,
+        grid_list: List[str]
+        ) -> str:
+        """Makes a displayable grid with the contents of grid_list arg inserted into it.
+
+        Args:
+            grid_list (List[Union[str, int]]): A list of length 9 containing everything
+            that has to be displayed in the grid
+
+        Returns:
+            str: The ready to display grid. Print to show.
+        """
+        grid: str = ''
         for line_num in range(1,12):
             if line_num in [4, 8]: # Rows with horizontal dividors.
-                game_grid += self._display_init[1]
+                grid += self._display_init[1]
 
             elif line_num in [2, 6, 10]: # These are the rows where the grid can have tokens (X or O).
                 corrector: int = [2, 6, 10].index(line_num) 
                 # This ensures that tokens are taken from the correct three index 
                 # positions depending on the row that we are in.
 
-                spot_one: str = internal_grid[line_num - (2+corrector)]
-                spot_two: str = internal_grid[line_num - (1+corrector)]
-                spot_three: str = internal_grid[line_num - corrector]
+                spot_one: str = grid_list[line_num - (2+corrector)]
+                spot_two: str = grid_list[line_num - (1+corrector)]
+                spot_three: str = grid_list[line_num - corrector]
                 # The lines above extract the information about what is in the internal 
                 # grid and assigns it to three variables, corresponding with three 
                 # available spaces in the row. 
@@ -73,10 +108,11 @@ class Display:
                 # Here we'd want to insert the three tokens in the 0,1,2 index
                 # positions from the internal_grid into the game_grid.
 
-                game_grid += f' {spot_one} | {spot_two} | {spot_three} \n'
+                grid += f' {spot_one} | {spot_two} | {spot_three} \n'
                 # The complete row is then concatenated to the game_grid.
-                
+            
             else:
-                game_grid += self._display_init[0] # Rows with vertical dividors and blank space.
+                grid += self._display_init[0] # Rows with vertical dividors and blank space.
 
-        print(game_grid)
+        return grid
+        
