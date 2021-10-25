@@ -4,6 +4,7 @@ Contains a function named main, which runs the game when called.
 This script imports classes from the supporting scripts.
 """
 
+
 from display import Display
 from player import Player
 from grid import Grid
