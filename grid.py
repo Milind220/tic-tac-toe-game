@@ -1,7 +1,7 @@
 """Script for Grid class"""
 
 
-from typing import List
+from typing import List, Union
 
 
 class Grid:
@@ -10,20 +10,37 @@ class Grid:
     This class does not display anything directly in the command line.
     Its methods run in the background to validate moves, update the
     grid, and to check if the game has been won or tied.
+
+    attributes:
+        internal_grid: contains the info regarding which spots in 
+        the 3x3 grid are empty, and what token the none empty ones have.
     """
     def __init__(self,
-                 _internal_grid: List[int] = list(range(9))) -> None:
+                 internal_grid: List[str] = [' ' for x in range(9)]) -> None:
+    # _internal_grid is what contains the info regarding which spots in
+    # the 3x3 grid are empty, and what token the none empty ones have.
+    # All the checks regarding game winning/ties, move validity, and 
+    # placing of token in grid is done here. Displayed through 
+    # show_game_grid() in Display class.
 
-        self._internal_grid = _internal_grid
-        print('grid created!')
+        self.internal_grid = internal_grid
+        print('Debug: grid created!')
     
     def check_valid(self) -> bool:
         """Checks if the move the player tried to make is valid or not"""
         pass
 
-    def set_int_grid(self):
-        """Changes a number in the grid list to token of the player"""
-        pass
+    def set_internal_grid(self, position: int, token: str) -> None:
+        """Mutates a position in the grid list to player token
+        
+        Changes the internal_grid implicitly, does not return it to be
+        reassigned
+        """
+        try:
+            self.internal_grid[position] = token
+        except Exception as err:
+            print(f'Error: something went wrong!\n{err}')
+
 
     def check_win(self) -> bool:
         """Checks to see if either player has won the game"""
@@ -32,3 +49,7 @@ class Grid:
     def check_tie(self) -> bool:
         """Checks to see if the game has been tied"""
         pass
+
+    def get_internal_grid(self) -> List[str]:
+        """Gets internal_grid attribute"""
+        return self.internal_grid
