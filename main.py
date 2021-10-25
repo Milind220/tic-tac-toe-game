@@ -1,18 +1,15 @@
-"""Main script for the tic tac toe game
-
-Contains a function named main, which runs the game when called.
-This script imports classes from the supporting scripts.
-"""
+"""Main script for the tic tac toe game. Run to play game."""
 
 
 from display import Display
-from player import Player
 from grid import Grid
+from player import Player
 import functions
 
 
 def main() ->  None:
     pass
+
 
 if __name__ == '__main__':
     main()
