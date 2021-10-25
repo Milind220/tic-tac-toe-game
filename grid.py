@@ -26,9 +26,16 @@ class Grid:
         self.internal_grid = internal_grid
         print('Debug: grid created!')
     
-    def check_valid(self) -> bool:
-        """Checks if the move the player tried to make is valid or not"""
-        pass
+    def check_valid(self, position: int) -> bool:
+        """Checks if the move the player tried to make is valid or not
+
+        Args:
+            position (int): position that player is trying to place a token in
+
+        Returns:
+            bool: true if empty position, false if already full.
+        """
+        return self.internal_grid[position] == ' '
 
     def set_internal_grid(self, position: int, token: str) -> None:
         """Mutates a position in the grid list to player token
@@ -41,14 +48,34 @@ class Grid:
         except Exception as err:
             print(f'Error: something went wrong!\n{err}')
 
-
     def check_win(self) -> bool:
-        """Checks to see if either player has won the game"""
-        pass
+        """Checks to see if either player has won the game
+        
+        Returns:
+            bool: True if game won, False if not
+        """
+        grid = self.get_internal_grid()
+        for i, x in enumerate(grid):
+            if i in [0,3,6]:
+                if x == grid[i+1] == grid[i+2] != ' ': # 3 in a row.
+                    return True
+            elif i in [0,1,2]:
+                if x == grid[i+3] == grid[i+6] != ' ': # 3 in a column.
+                    return True
+            elif i == 0:
+                if x == grid[4] == grid[8] != ' ': # 3 diagonally.
+                    return True
+            elif i == 2:
+                if x == grid[4] == grid[6] != ' ': # 3 diagonally other direction.
+                    return True
+        return False
 
     def check_tie(self) -> bool:
-        """Checks to see if the game has been tied"""
-        pass
+        """Checks to see if the game has been tied
+        
+        Returns:
+            bool: True if tie, false if not a tie"""
+        return ' ' not in self.internal_grid  # Checks if game grid is full.
 
     def get_internal_grid(self) -> List[str]:
         """Gets internal_grid attribute"""
