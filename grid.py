@@ -1,7 +1,7 @@
 """Script for Grid class"""
 
 
-from typing import List, Union
+from typing import List
 
 
 class Grid:
