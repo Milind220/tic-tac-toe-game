@@ -51,3 +51,6 @@ class Player:
             Tuple: The token that the player chose.
         """
         return (move, self.token)
+    
+    def print_welcome_statement(self) -> None:
+        print(f'Welcome! Player {self.num}, {self.name}, token: {self.token}\n')
