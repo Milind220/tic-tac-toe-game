@@ -8,7 +8,7 @@ class Player:
     """Class to represent a player in the game
     
     Meant to be instantiated twice in the game, once for each player.
-    
+
     Methods:
         set_name: Sets the name attribute for the player.
         set_num: Sets the player number (either 1 or 2).
@@ -19,8 +19,9 @@ class Player:
     def __init__(self) -> None:
         print('player created!')
 
-    def set_name(self, name: str = '') -> None:
+    def set_name(self) -> None:
         """Sets the name of the player"""
+        name = input(f"Player {self.num} name: ")
         self.name = name
 
     def set_num(self, num: int) -> None:
