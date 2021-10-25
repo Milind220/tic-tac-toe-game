@@ -23,7 +23,6 @@ class Display:
                  ) -> None:
         self.player = player,
         self.ongoing = ongoing,
-        self.display_grid: str = self._set_init_display()
         print('Debug: display created!')
     
     def show_invalid_move(self) -> None:
