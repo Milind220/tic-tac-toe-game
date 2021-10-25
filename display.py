@@ -26,20 +26,6 @@ class Display:
         self.display_grid: str = self._set_init_display()
         print('Debug: display created!')
     
-    def _set_init_display(self) -> str:
-        """Creates the initial display
-
-        Returns:
-            str: The display grid, as a string printed in multiple lines in the command line.
-        """
-        result = ''
-        for line_number in range(1,12):
-            if line_number == 4 or line_number == 8: # These are the lines where the grid has dividors.
-                result += self._display_init[1]
-            else:
-                result += self._display_init[0]
-        return result
-    
     def show_invalid_move(self) -> None:
         """Prints a line to notify the player that the move is invalid.
         
