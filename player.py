@@ -13,7 +13,6 @@ class Player:
         get_num: Gets the player number.
         set_token: Sets the token (X or O) for the player.
         get_token: Gets the token of the player.
-        set_move: Returns the grid space that the player has selected for the move (str).
         print_welcome_statement: Prints the welcome statement to acknowledge player.
     """
     def __init__(self) -> None:
@@ -42,15 +41,6 @@ class Player:
     def get_token(self) -> str:
         """Returns the token for the player"""
         return self.token
-
-    def set_move(self) -> str:
-        """Takes the move that the player wants to make and returns it for the grid to use
-
-        Returns:
-            str: Grid-space that the player has chosen to place a token in.
-        """
-        move = str(input(f'Player {self.num}. Enter move grid space: '))
-        return move
     
     def print_welcome_statement(self) -> None:
         """Prints statement to acknowledge the player"""
