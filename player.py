@@ -19,9 +19,8 @@ class Player:
     def __init__(self) -> None:
         print('player created!')
 
-    def set_name(self) -> None:
+    def set_name(self, name: str) -> None:
         """Sets the name of the player"""
-        name = input(f"Player {self.num} name: ")
         self.name = name
 
     def set_num(self, num: int) -> None:
@@ -38,7 +37,7 @@ class Player:
         Returns:
             str: Grid-space that the player has chosen to place a token in.
         """
-        move = str(input('Grid space: '))
+        move = str(input(f'Player {self.num}. Enter move grid space: '))
         return move
 
     def tell_grid(self, move: int) -> Tuple:
