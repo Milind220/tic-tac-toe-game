@@ -3,6 +3,8 @@
 
 from typing import List
 
+from display import Display
+
 
 class Grid:
     """Class for the display grid in the game.
@@ -52,31 +54,33 @@ class Grid:
         """Checks to see if either player has won the game
         
         Returns:
-            bool: True if game won, False if not
+            bool: False if game won, True if not
         """
         grid = self.get_internal_grid()
-        for i, x in enumerate(grid):
+        for i, value in enumerate(grid):
             if i in [0,3,6]:
-                if x == grid[i+1] == grid[i+2] != ' ': # 3 in a row.
-                    return True
-            elif i in [0,1,2]:
-                if x == grid[i+3] == grid[i+6] != ' ': # 3 in a column.
-                    return True
-            elif i == 0:
-                if x == grid[4] == grid[8] != ' ': # 3 diagonally.
-                    return True
-            elif i == 2:
-                if x == grid[4] == grid[6] != ' ': # 3 diagonally other direction.
-                    return True
-        return False
+                if value == grid[i+1] == grid[i+2] != ' ': # 3 in a row.
+                    return False
+            if i in [0,1,2]:
+                if value == grid[i+3] == grid[i+6] != ' ': # 3 in a column.
+                    return False
+            if i == 0:
+                if value == grid[4] == grid[8] != ' ': # 3 diagonally.
+                    return False
+            if i == 2:
+                if value == grid[4] == grid[6] != ' ': # 3 diagonally other direction.
+                    return False
+        return True
 
     def check_tie(self) -> bool:
         """Checks to see if the game has been tied
         
         Returns:
-            bool: True if tie, false if not a tie"""
-        return ' ' not in self.internal_grid  # Checks if game grid is full.
+            bool: False if tie, True if not a tie
+        """
+        return ' ' in self.internal_grid  # Checks if game grid is full.
 
     def get_internal_grid(self) -> List[str]:
         """Gets internal_grid attribute"""
         return self.internal_grid
+
