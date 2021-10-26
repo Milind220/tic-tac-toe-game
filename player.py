@@ -22,11 +22,18 @@ class Player:
     def set_name(self, name: str) -> None:
         """Sets the name of the player"""
         self.name = name
+    
+    def get_name(self) -> str:
+        """Returns the name of the player"""
+        return self.name
 
     def set_num(self, num: int) -> None:
         """Sets the player number"""
         self.num = num
 
+    def get_num(self) -> int:
+        return self.num
+        
     def set_token(self, token: str) -> None:
         """Sets the token for the player (Either X or O)"""
         self.token = token
