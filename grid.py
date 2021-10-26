@@ -3,8 +3,6 @@
 
 from typing import List
 
-from display import Display
-
 
 class Grid:
     """Class for the display grid in the game.
@@ -26,7 +24,6 @@ class Grid:
     # show_game_grid() in Display class.
 
         self.internal_grid = internal_grid
-        print('Debug: grid created!')
     
     def check_valid(self, position: int) -> bool:
         """Checks if the move the player tried to make is valid or not
@@ -82,6 +79,6 @@ class Grid:
         return ' ' not in self.internal_grid  # Checks if game grid is full, ie, a tie.
 
     def get_internal_grid(self) -> List[str]:
-        """Gets internal_grid attribute"""
+        """Returns internal_grid attribute"""
         return self.internal_grid
 
