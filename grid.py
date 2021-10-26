@@ -37,8 +37,8 @@ class Grid:
         Returns:
             bool: true if empty position, false if already full.
         """
-        position -= 1 # To get it in the range of 0-8 index positions
-        return self.internal_grid[position] == ' '
+        # position -1 To get it in the range of 0-8 index positions
+        return self.internal_grid[position - 1] == ' '
 
     def set_internal_grid(self, position: int, token: str) -> None:
         """Mutates a position in the grid list to player token
@@ -47,7 +47,7 @@ class Grid:
         reassigned
         """
         try:
-            self.internal_grid[position] = token
+            self.internal_grid[position-1] = token
         except Exception as err:
             print(f'Error: something went wrong!\n{err}')
 
