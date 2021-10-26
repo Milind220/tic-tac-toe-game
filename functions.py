@@ -1,6 +1,10 @@
 """Script with functions to tie together program for main"""
 
 
+from display import Display
+from grid import Grid
+
+
 def player_creator(player_one, player_two) -> None:
     tokens = ['X', 'O']
 
@@ -24,5 +28,13 @@ def player_creator(player_one, player_two) -> None:
     player_two.set_token(token_two)
 
 
-def show_basic_rules() -> None:
+def show_basic_rules(display, grid) -> None:
+    print('Use the numbers 1-9 to select where to place your token in the grid\n')
+    display.show_possible_moves_grid(grid.get_internal_grid())
+    input('Press enter to start: ')
+
+
+def 
+
+if __name__ == '__main__':
     pass
