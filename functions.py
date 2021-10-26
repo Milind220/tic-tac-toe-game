@@ -49,11 +49,14 @@ def check_end_game(grid, display, current_player) -> bool:
         bool: False if game is over, True if ongoing. Directly passed to ongoing 
             variable to understand when to stop the game.
     """
+    current_grid = grid.get_internal_grid()
     if grid.check_win():
+        display.show_game_grid(current_grid)  # Show the grid one last time to the players.
         display.show_win(current_player)
         return False
 
     elif grid.check_tie():
+        display.show_game_grid(current_grid)
         display.show_tie()
         return False
 
