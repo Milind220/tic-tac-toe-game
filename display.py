@@ -16,7 +16,7 @@ class Display:
         show tie: Informs the players that the game has been tied.
     """
     _display_init: List[str]= ['   |   |   \n', '-----------\n'] # The two 'lines' that are required to generate a grid.
-    _possible_moves_list: List[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9] # Used to show the players what moves are available.
+ 
     def __init__(self, 
                  player: int = 1,
                  ongoing: bool = True,
@@ -35,9 +35,9 @@ class Display:
         """
         print(f'Sorry player {self.player}! that move is invalid. Try again!')
     
-    def show_win(self) -> None:
+    def show_win(self, player_name: str) -> None:
         """Prints a line to notify the player that someone has won the game."""
-        print(f'Player {self.player} has won the game!')
+        print(f'Player {player_name} has won the game!')
     
     def show_tie(self) -> None:
         """Prints a line to notify the player that the game has been tied."""
