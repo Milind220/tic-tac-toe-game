@@ -54,31 +54,31 @@ class Grid:
         """Checks to see if either player has won the game
         
         Returns:
-            bool: False if game won, True if not
+            bool: True if game won, False if not
         """
         grid = self.get_internal_grid()
         for i, value in enumerate(grid):
             if i in [0,3,6]:
                 if value == grid[i+1] == grid[i+2] != ' ': # 3 in a row.
-                    return False
+                    return True
             if i in [0,1,2]:
                 if value == grid[i+3] == grid[i+6] != ' ': # 3 in a column.
-                    return False
+                    return True
             if i == 0:
                 if value == grid[4] == grid[8] != ' ': # 3 diagonally.
-                    return False
+                    return True
             if i == 2:
                 if value == grid[4] == grid[6] != ' ': # 3 diagonally other direction.
-                    return False
-        return True
+                    return True
+        return False
 
     def check_tie(self) -> bool:
         """Checks to see if the game has been tied
         
         Returns:
-            bool: False if tie, True if not a tie
+            bool: True if tie, False if not a tie
         """
-        return ' ' in self.internal_grid  # Checks if game grid is full.
+        return ' ' not in self.internal_grid  # Checks if game grid is full, ie, a tie.
 
     def get_internal_grid(self) -> List[str]:
         """Gets internal_grid attribute"""
