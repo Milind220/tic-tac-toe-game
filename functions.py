@@ -38,13 +38,40 @@ def check_end_game(grid, display, current_player) -> bool:
     if grid.check_win():
         display.show_win(current_player)
         return False
-        
+
     elif grid.check_tie():
         display.show_tie()
         return False
 
     return True
 
+def play_turn(grid, player) -> None:
+    token: str = player.get_token()
+    print(f"Player {player.get_num()}'s turn\n")
+    while True:
+        try:
+            move: int = int(input('Enter your move here: '))
+            if (move < 1) or (move > 9):
+                print('Please enter a number between 1 and 9\n')
+                continue
+            elif not grid.check_valid(move):
+                print('Enter a valid move please!\n')
+                continue
+            else:
+                break   
+        except TypeError:
+            print('Enter a number please!\n')
+            continue
+    
+    grid.set_internal_grid(move, token)
+
+    
+
+    
+
+    
+
+         
 
 if __name__ == '__main__':
     pass
