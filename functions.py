@@ -34,7 +34,17 @@ def show_basic_rules(display, grid) -> None:
     input('Press enter to start: ')
 
 
-def 
+def check_end_game(grid, display, current_player) -> bool:
+    if grid.check_win():
+        display.show_win(current_player)
+        return False
+        
+    elif grid.check_tie():
+        display.show_tie()
+        return False
+
+    return True
+
 
 if __name__ == '__main__':
     pass
