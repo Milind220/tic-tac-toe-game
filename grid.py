@@ -37,6 +37,7 @@ class Grid:
         Returns:
             bool: true if empty position, false if already full.
         """
+        position -= 1 # To get it in the range of 0-8 index positions
         return self.internal_grid[position] == ' '
 
     def set_internal_grid(self, position: int, token: str) -> None:
