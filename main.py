@@ -19,6 +19,7 @@ def main() ->  None:
     
     ongoing: bool = True
     round_counter: int = 1
+
     while ongoing: # Each loop through is one turn.
         if round_counter % 2 != 0:
             current_player = player_one
@@ -30,8 +31,9 @@ def main() ->  None:
         display.show_game_grid(current_grid)
 
         functions.play_turn(grid, current_player)
-        round_counter += 1
         ongoing = functions.check_end_game(grid, display, current_player)
+
+        round_counter += 1
 
 
 if __name__ == '__main__':

@@ -1,9 +1,6 @@
 """Script for Player class"""
 
 
-from typing import Tuple
-
-
 class Player:
     """Class to represent a player in the game
     
@@ -11,10 +8,13 @@ class Player:
 
     Methods:
         set_name: Sets the name attribute for the player.
+        get_name: Gets the name attribute for the player.
         set_num: Sets the player number (either 1 or 2).
+        get_num: Gets the player number.
         set_token: Sets the token (X or O) for the player.
+        get_token: Gets the token of the player.
         set_move: Returns the grid space that the player has selected for the move (str).
-        tell_grid: Tells the grid what token to place in what grid space.
+        print_welcome_statement: Prints the welcome statement to acknowledge player.
     """
     def __init__(self) -> None:
         print('player created!')
@@ -32,6 +32,7 @@ class Player:
         self.num = num
 
     def get_num(self) -> int:
+        """returns the player number"""
         return self.num
 
     def set_token(self, token: str) -> None:
@@ -39,8 +40,9 @@ class Player:
         self.token = token
 
     def get_token(self) -> str:
+        """Returns the token for the player"""
         return self.token
-        
+
     def set_move(self) -> str:
         """Takes the move that the player wants to make and returns it for the grid to use
 
@@ -49,17 +51,7 @@ class Player:
         """
         move = str(input(f'Player {self.num}. Enter move grid space: '))
         return move
-
-    def tell_grid(self, move: int) -> Tuple:
-        """Tells the grid what token to place in what grid space
-
-        Args:
-            move (int): The grid space that the player wants to place a token in.
-
-        Returns:
-            Tuple: The token that the player chose.
-        """
-        return (move, self.token)
     
     def print_welcome_statement(self) -> None:
+        """Prints statement to acknowledge the player"""
         print(f'Welcome! Player {self.num}, {self.name}, token: {self.token}\n')

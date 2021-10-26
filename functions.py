@@ -1,11 +1,13 @@
 """Script with functions to tie together program for main"""
 
 
-from display import Display
-from grid import Grid
-
-
 def player_creator(player_one, player_two) -> None:
+    """Assigns name, num, and token to both players
+
+    Args:
+        player_one (object: Player class): first player.
+        player_two (object: Player class]: second player.
+    """
     tokens = ['X', 'O']
 
     name_one = input("Player 1, what is your name?: ")
@@ -29,12 +31,24 @@ def player_creator(player_one, player_two) -> None:
 
 
 def show_basic_rules(display, grid) -> None:
+    """Prints the basic rules of the game and signifies start"""
     print('Use the numbers 1-9 to select where to place your token in the grid\n')
     display.show_possible_moves_grid(grid.get_internal_grid())
     input('Press enter to start: ')
 
 
 def check_end_game(grid, display, current_player) -> bool:
+    """Checks if game either tied or won
+    
+    Args:
+        grid (object; instance of Grid class): Created in the beginning of main.
+        current_player (object; instance of Player class): The player who's turn it is.
+        display (object; instance of Display class): Created in the beginning of main.
+
+    Returns:
+        bool: False if game is over, True if ongoing. Directly passed to ongoing 
+            variable to understand when to stop the game.
+    """
     if grid.check_win():
         display.show_win(current_player)
         return False
@@ -45,7 +59,14 @@ def check_end_game(grid, display, current_player) -> bool:
 
     return True
 
+
 def play_turn(grid, player) -> None:
+    """Executes everything needed for one turn/move
+
+    Args:
+        grid (object; instance of Grid class): The grid object created in the very beginning.
+        player (object; instance of Player class): The player object created in the very beginning.
+    """
     token: str = player.get_token()
     print(f"Player {player.get_num()}'s turn\n")
 
@@ -55,13 +76,13 @@ def play_turn(grid, player) -> None:
             if (move < 1) or (move > 9):  # Out of range.
                 print('Please enter a number between 1 and 9\n')
                 continue
-            elif not grid.check_valid(move): # Check if something already there.
+            elif not grid.check_valid(move): # Check if token already placed there.
                 print('Enter a valid move please!\n')
                 continue
             else:
                 break   
-        except ValueError:
+        except ValueError: # Value entered not an int.
             print('Enter a number please!\n')
             continue
     
-    grid.set_internal_grid(move, token)
+    grid.set_internal_grid(move, token)  # Assigns token to position in grid.

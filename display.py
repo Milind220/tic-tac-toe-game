@@ -1,7 +1,7 @@
 """Script for Display class"""
 
 
-from typing import List, Tuple, Union
+from typing import List
 
 
 class Display:
