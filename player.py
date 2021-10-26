@@ -33,11 +33,14 @@ class Player:
 
     def get_num(self) -> int:
         return self.num
-        
+
     def set_token(self, token: str) -> None:
         """Sets the token for the player (Either X or O)"""
         self.token = token
 
+    def get_token(self) -> str:
+        return self.token
+        
     def set_move(self) -> str:
         """Takes the move that the player wants to make and returns it for the grid to use
 
