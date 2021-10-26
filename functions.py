@@ -48,30 +48,20 @@ def check_end_game(grid, display, current_player) -> bool:
 def play_turn(grid, player) -> None:
     token: str = player.get_token()
     print(f"Player {player.get_num()}'s turn\n")
-    while True:
+
+    while True:  # Player enters move, which is then validated.
         try:
             move: int = int(input('Enter your move here: '))
-            if (move < 1) or (move > 9):
+            if (move < 1) or (move > 9):  # Out of range.
                 print('Please enter a number between 1 and 9\n')
                 continue
-            elif not grid.check_valid(move):
+            elif not grid.check_valid(move): # Check if something already there.
                 print('Enter a valid move please!\n')
                 continue
             else:
                 break   
-        except TypeError:
+        except ValueError:
             print('Enter a number please!\n')
             continue
     
     grid.set_internal_grid(move, token)
-
-    
-
-    
-
-    
-
-         
-
-if __name__ == '__main__':
-    pass
