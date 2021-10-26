@@ -35,9 +35,11 @@ class Display:
         """
         print(f'Sorry player {self.player}! that move is invalid. Try again!')
     
-    def show_win(self, player_name: str) -> None:
+    def show_win(self, player) -> None:
         """Prints a line to notify the player that someone has won the game."""
-        print(f'Player {player_name} has won the game!')
+        name: str = player.get_name()
+        num: int = player.get_num()
+        print(f'Player {num}, {name} has won the game!')
     
     def show_tie(self) -> None:
         """Prints a line to notify the player that the game has been tied."""
