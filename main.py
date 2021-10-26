@@ -11,30 +11,27 @@ def main() ->  None:
     grid = Grid()
     display = Display()
     
-    # main while loop begins. Each iteration of this loop is 'one game'.
-    game_counter: int = 1
-    game: bool = True
-    while game:
+    player_one = Player()
+    player_two = Player()
+    functions.player_creator(player_one, player_two) # Assigns name, num, token
 
-        player_one = Player()
-        player_two = Player()
-        functions.player_creator(player_one, player_two) # Assigns name, num, token
+    functions.show_basic_rules(display, grid)
+    
+    ongoing: bool = True
+    round_counter: int = 1
+    while ongoing: # Each loop through is one turn.
+        if round_counter % 2 != 0:
+            current_player = player_one
+        else:
+            current_player = player_two
+          
+        current_grid = grid.get_internal_grid()
+        display.show_possible_moves_grid(current_grid)
+        display.show_game_grid(current_grid)
 
-        functions.show_basic_rules(display, grid)
-        
-        ongoing = True
-        while ongoing:
-        # game_turns while loop begins. each loop through is one turn.
-            
-            # maybe make a play_turn function w player 1 or 2 as arg
-
-            ## grid is displayed
-            ## player is asked to enter turn
-            ## turn validity is checked
-            ## turn is accepted and grid updated
-            ## loop ends, next turn begins from top of loop
-            pass
-        pass
+        functions.play_turn(grid, current_player)
+        round_counter += 1
+        ongoing = functions.check_end_game(grid, display, current_player)
 
 
 if __name__ == '__main__':
