@@ -5,6 +5,6 @@ A guide grid is shown alongside, to help players understand what moves remain an
 Not a bad way to kill some time (if you're super super super bored)
 
 ### To Run
-Clone the repo and run main.py, making sure the other files are in the same directory.
+Clone the repo/get the zip file and run main.py, making sure the other files are in the same directory.
 
 Let me know what you think!
