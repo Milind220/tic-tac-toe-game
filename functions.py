@@ -1,5 +1,7 @@
 """Script with functions to tie together program for main"""
 
+import os
+
 
 def player_creator(player_one, player_two) -> None:
     """Assigns name, num, and token to both players
@@ -89,3 +91,18 @@ def play_turn(grid, player) -> None:
             continue
     
     grid.set_internal_grid(move, token)  # Assigns token to position in grid.
+
+
+def clearscreen(numlines: int =100):
+    """Clear the console.
+
+    numlines is an optional argument used only as a fall-back.
+    """
+    if os.name == "posix":  # Unix/Linux/MacOS/BSD/etc
+        os.system('clear')
+    
+    elif os.name in ("nt", "dos", "ce"): # DOS/Windows
+        os.system('CLS')
+
+    else: # Fallback for other operating systems.
+        print('\n' * numlines)
