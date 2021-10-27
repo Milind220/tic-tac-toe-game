@@ -19,6 +19,7 @@ def player_creator(player_one, player_two) -> None:
             tokens.remove(token_one.upper())
             break
         print('Please choose either X or O\n')
+    clearscreen()
     name_two = input("Player 2, what is your name?: ")
     token_two = tokens[0]
     print(f'Player 2 token: {token_two}')
@@ -30,6 +31,7 @@ def player_creator(player_one, player_two) -> None:
     player_two.set_name(name_two)
     player_two.set_num(2)
     player_two.set_token(token_two)
+    clearscreen()
 
 
 def show_basic_rules(display, grid) -> None:
@@ -37,6 +39,7 @@ def show_basic_rules(display, grid) -> None:
     print('Use the numbers 1-9 to select where to place your token in the grid\n')
     display.show_possible_moves_grid(grid.get_internal_grid())
     input('Press enter to start: ')
+    clearscreen()
 
 
 def check_end_game(grid, display, current_player) -> bool:
@@ -91,12 +94,14 @@ def play_turn(grid, player) -> None:
             continue
     
     grid.set_internal_grid(move, token)  # Assigns token to position in grid.
+    clearscreen()
 
 
-def clearscreen(numlines: int =100):
+def clearscreen(numlines: int =100) -> None:
     """Clear the console.
 
     numlines is an optional argument used only as a fall-back.
+    Source: Steven D'Aprano, http://www.velocityreviews.com/forums
     """
     if os.name == "posix":  # Unix/Linux/MacOS/BSD/etc
         os.system('clear')
