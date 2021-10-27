@@ -1,5 +1,6 @@
 """Script with functions to tie together program for main"""
 
+
 import os
 
 
@@ -31,12 +32,20 @@ def player_creator(player_one, player_two) -> None:
     player_two.set_name(name_two)
     player_two.set_num(2)
     player_two.set_token(token_two)
+    input('Press enter to continue: ')
     clearscreen()
 
 
 def show_basic_rules(display, grid) -> None:
     """Prints the basic rules of the game and signifies start"""
-    print('Use the numbers 1-9 to select where to place your token in the grid\n')
+    num_char: int = 50
+    text: str = 'Tic-Tac-Toe: BASIC RULES'
+    space_each_side: int = round((num_char - len(text))/2)
+    print('-' * num_char)
+    print(' ' * space_each_side, text, ' ' * space_each_side)
+    print('-' * num_char)
+    print('\n\n1) First player to get 3 tokens in a line in a row, column or diagonal wins!\n')
+    print('2) Use the numbers 1-9 to select where to place your token in the grid\n')
     display.show_possible_moves_grid(grid.get_internal_grid())
     input('Press enter to start: ')
     clearscreen()
