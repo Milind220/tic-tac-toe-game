@@ -15,8 +15,6 @@ class Player:
         get_token: Gets the token of the player.
         print_welcome_statement: Prints the welcome statement to acknowledge player.
     """
-    def __init__(self) -> None:
-        print('player created!')
 
     def set_name(self, name: str) -> None:
         """Sets the name of the player"""
