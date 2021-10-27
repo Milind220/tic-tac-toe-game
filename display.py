@@ -23,7 +23,6 @@ class Display:
                  ) -> None:
         self.player = player,
         self.ongoing = ongoing,
-        print('Debug: display created!')
     
     def show_invalid_move(self) -> None:
         """Prints a line to notify the player that the move is invalid.

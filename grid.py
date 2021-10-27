@@ -17,13 +17,13 @@ class Grid:
     """
     def __init__(self,
                  internal_grid: List[str] = [' ' for x in range(9)]) -> None:
-    # _internal_grid is what contains the info regarding which spots in
-    # the 3x3 grid are empty, and what token the none empty ones have.
-    # All the checks regarding game winning/ties, move validity, and 
-    # placing of token in grid is done here. Displayed through 
-    # show_game_grid() in Display class.
 
         self.internal_grid = internal_grid
+        # _internal_grid is what contains the info regarding which spots in
+        # the 3x3 grid are empty, and what token the none empty ones have.
+        # All the checks regarding game winning/ties, move validity, and 
+        # placing of token in grid is done here. Displayed through 
+        # show_game_grid() in Display class.
     
     def check_valid(self, position: int) -> bool:
         """Checks if the move the player tried to make is valid or not
