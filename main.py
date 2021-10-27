@@ -32,7 +32,6 @@ def main() ->  None:
 
         functions.play_turn(grid, current_player)
         ongoing = functions.check_end_game(grid, display, current_player)
-
         round_counter += 1
 
 
