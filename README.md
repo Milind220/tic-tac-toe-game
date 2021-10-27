@@ -8,3 +8,5 @@ Not a bad way to kill some time (if you're super super super bored)
 Clone the repo/get the zip file and run main.py, making sure the other files are in the same directory.
 
 Let me know what you think!
+
+[![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/Milind220/tic-tac-toe-game)
