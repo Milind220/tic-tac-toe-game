@@ -19,7 +19,7 @@ class Player:
     def set_name(self, name: str) -> None:
         """Sets the name of the player"""
         self.name = name
-    
+
     def get_name(self) -> str:
         """Returns the name of the player"""
         return self.name
@@ -39,7 +39,7 @@ class Player:
     def get_token(self) -> str:
         """Returns the token for the player"""
         return self.token
-    
+
     def print_welcome_statement(self) -> None:
         """Prints statement to acknowledge the player"""
-        print(f'Welcome! Player {self.num}, {self.name}, token: {self.token}\n')
+        print(f"Welcome! Player {self.num}, {self.name}, token: {self.token}\n")
