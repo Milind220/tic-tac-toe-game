@@ -19,7 +19,8 @@ class Display:
     _display_init: List[str] = [
         "   |   |   \n",
         "-----------\n",
-    ]  # The two 'lines' that are required to generate a grid.
+    ]
+    # The two 'lines' that are required to generate a grid.
 
     def __init__(self, player: int = 1, ongoing: bool = True,) -> None:
         self.player = player
@@ -37,8 +38,8 @@ class Display:
 
     def show_win(self, player) -> None:
         """Prints a line to notify the player that someone has won the game."""
-        name: str = player.get_name()
-        num: int = player.get_num()
+        name: str = player.name
+        num: int = player.num
         print(f"Player {num}, {name} has won the game!")
 
     def show_tie(self) -> None:

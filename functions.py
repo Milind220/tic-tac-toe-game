@@ -1,7 +1,7 @@
 """Script with functions to tie together program for main"""
 
-
 import os
+from typing import List
 
 
 def player_creator(player_one, player_two) -> None:
@@ -11,27 +11,27 @@ def player_creator(player_one, player_two) -> None:
         player_one (object: Player class): first player.
         player_two (object: Player class]: second player.
     """
-    tokens = ["X", "O"]
+    tokens: List[str] = ["X", "O"]
 
-    name_one = input("Player 1, what is your name?: ")
+    name_one: str = input("Player 1, what is your name?: ")
     while True:
-        token_one = input("Player 1, Choose a token (Either X or O)\nEnter here: ")
+        token_one: str = input("Player 1, Choose a token (Either X or O)\nEnter here: ")
         if token_one.upper() in tokens:
             tokens.remove(token_one.upper())
             break
         print("Please choose either X or O\n")
     clearscreen()
-    name_two = input("Player 2, what is your name?: ")
-    token_two = tokens[0]
+    name_two: str = input("Player 2, what is your name?: ")
+    token_two: str = tokens[0]
     print(f"Player 2 token: {token_two}")
 
-    player_one.set_name(name_one)
-    player_one.set_num(1)
-    player_one.set_token(token_one)
+    player_one.name = name_one
+    player_one.num = 1
+    player_one.token = token_one
 
-    player_two.set_name(name_two)
-    player_two.set_num(2)
-    player_two.set_token(token_two)
+    player_two.name = name_two
+    player_two.num = 2
+    player_two.token = token_two
     input("Press enter to continue: ")
     clearscreen()
 
@@ -41,6 +41,7 @@ def show_basic_rules(display, grid) -> None:
     num_char: int = 50
     text: str = "Tic-Tac-Toe: BASIC RULES"
     space_each_side: int = round((num_char - len(text)) / 2)
+
     print("-" * num_char)
     print(" " * space_each_side, text, " " * space_each_side)
     print("-" * num_char)
@@ -48,7 +49,7 @@ def show_basic_rules(display, grid) -> None:
         "\n\n1) First player to get 3 tokens in a line in a row, column or diagonal wins!\n"
     )
     print("2) Use the numbers 1-9 to select where to place your token in the grid\n")
-    display.show_possible_moves_grid(grid.get_internal_grid())
+    display.show_possible_moves_grid(grid.internal_grid)
     input("Press enter to start: ")
     clearscreen()
 
@@ -65,11 +66,10 @@ def check_end_game(grid, display, current_player) -> bool:
         bool: False if game is over, True if ongoing. Directly passed to ongoing 
             variable to understand when to stop the game.
     """
-    current_grid = grid.get_internal_grid()
+    current_grid = grid.internal_grid
     if grid.check_win():
-        display.show_game_grid(
-            current_grid
-        )  # Show the grid one last time to the players.
+        # Show the grid one last time to the players.
+        display.show_game_grid(current_grid)
         display.show_win(current_player)
         return False
 
@@ -88,8 +88,8 @@ def play_turn(grid, player) -> None:
         grid (object; instance of Grid class): The grid object created in the very beginning.
         player (object; instance of Player class): The player object created in the very beginning.
     """
-    token: str = player.get_token()
-    print(f"Player {player.get_num()}'s turn\n")
+    token: str = player.token
+    print(f"Player {player.num}'s turn\n")
 
     while True:  # Player enters move, which is then validated.
         try:
@@ -118,9 +118,7 @@ def clearscreen(numlines: int = 100) -> None:
     """
     if os.name == "posix":  # Unix/Linux/MacOS/BSD/etc
         os.system("clear")
-
     elif os.name in ("nt", "dos", "ce"):  # DOS/Windows
         os.system("CLS")
-
     else:  # Fallback for other operating systems.
         print("\n" * numlines)

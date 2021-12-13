@@ -17,7 +17,6 @@ class Grid:
     """
 
     def __init__(self, internal_grid: List[str] = [" " for x in range(9)]) -> None:
-
         self.internal_grid = internal_grid
         # _internal_grid is what contains the info regarding which spots in
         # the 3x3 grid are empty, and what token the none empty ones have.
@@ -54,7 +53,7 @@ class Grid:
         Returns:
             bool: True if game won, False if not
         """
-        grid = self.get_internal_grid()
+        grid = self.internal_grid
         for i, value in enumerate(grid):
             if i in [0, 3, 6]:
                 if value == grid[i + 1] == grid[i + 2] != " ":  # 3 in a row.
@@ -77,7 +76,3 @@ class Grid:
             bool: True if tie, False if not a tie
         """
         return " " not in self.internal_grid  # Checks if game grid is full, ie, a tie.
-
-    def get_internal_grid(self) -> List[str]:
-        """Returns internal_grid attribute"""
-        return self.internal_grid
